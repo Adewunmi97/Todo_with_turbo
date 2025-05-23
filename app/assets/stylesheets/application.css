@@ -9,10 +9,27 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-/* turbo-frame {
+
+ body {
+  background-color: #f7f1f1;
+  width: 80%;
+  margin: auto;
+ }
+
+ .heading {
+  text-align: center;
+  font-size: 3rem;
+ }
+
+ turbo-frame {
     display: block;
-    border: 1px solid blue;
-} */
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
 .completed {
   text-decoration: line-through;
