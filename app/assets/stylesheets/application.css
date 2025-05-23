@@ -8,4 +8,67 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-turbo-frame {display: block; display: block; border: 1px solid blue;}
+
+/* turbo-frame {
+    display: block;
+    border: 1px solid blue;
+} */
+
+.completed {
+  text-decoration: line-through;
+  color: #888; /* Optional: Change the color to indicate completion */
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Space between elements */
+    padding: 8px;
+    border-bottom: 1px solid #eee; /* Optional: Add a separator between todos */
+}
+
+.todo-status {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+
+.todo-title {
+  flex: 1; /* Allow the title to take up remaining space */
+  font-size: 1.2em;
+}
+
+.todo-title.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px; /* Space between buttons */
+}
+
+.inline-button, .delete-button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.inline-button {
+  background-color: #91bbe7;
+  color: white;
+}
+
+.inline-button:hover {
+  background-color: black;
+}
+
+.delete-button {
+  background-color: #e7858f;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #e7858f;
+}
