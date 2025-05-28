@@ -23,15 +23,23 @@ RSpec.describe TodosController, type: :controller do
       todo.reload
       expect(todo.title).to eq('Updated Task')
     end
+
+    context 'with Turbo Stream format' do
+      it 'renders the turbo stream template' do
+        patch :update, params: { id: todo.id, todo: { title: 'Updated via Turbo' } }, format: :turbo_stream
+        expect(response.media_type).to eq Mime[:turbo_stream]
+        expect(response.body).to include('turbo-stream')
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
-  let!(:todo) { Todo.create!(title: 'Destroy Me', status: 'incomplete') }
+    let!(:todo) { Todo.create!(title: 'Destroy Me', status: 'incomplete') }
 
-  it 'destroys the requested todo' do
-    expect {
-      delete :destroy, params: { id: todo.id }, format: :turbo_stream
-    }.to change(Todo, :count).by(-1)
+    it 'destroys the requested todo' do
+      expect {
+        delete :destroy, params: { id: todo.id }, format: :turbo_stream
+      }.to change(Todo, :count).by(-1)
+    end
   end
-end
 end
