@@ -78,7 +78,12 @@
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-default: &default
+
+
+<% if ENV['GITHUB_ACTIONS'] %>
+  <%= ERB.new(File.read(Rails.root.join("config/database.yml.github_actions"))).result(binding) %>
+<% else %>
+  default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -107,3 +112,5 @@ cable:
 queue:
   <<: *production
   migrations_paths: db/queue_migrate
+
+<% end %>

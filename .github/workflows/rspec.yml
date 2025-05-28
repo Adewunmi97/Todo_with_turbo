@@ -1,0 +1,38 @@
+name: RSpec Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0 # adjust as needed
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install
+    - name: Set up database
+      run: |
+        cp config/database.yml.github-actions config/database.yml
+        bundle exec rails db:create
+        bundle exec rails db:schema:load
+    - name: Run tests
+      run: bundle exec rspec
