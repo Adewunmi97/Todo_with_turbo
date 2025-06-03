@@ -25,10 +25,6 @@ Live updates happen **automatically** across multiple sessions when new tasks ar
 - RSpec
 - Postgres
 
-## Live Demo
-
-[Live Demo]( https://ade-app.herokuapp.com/)
-
 ---
 
 ## ✨ Features
@@ -93,7 +89,7 @@ Adewunmi A.
 
 ## Video Presentation
 
-[Loom Link](https://www.loom.com/share/ca04992e28f344b5b8a67fdbd539f849)
+[Loom Link](https://www.loom.com/share/97bbca025dba42bb97db73fce492abfb?sid=d79610ac-3142-416f-ba21-d97dbf61a673)
 
 ## Show your support
 
